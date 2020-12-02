@@ -23,9 +23,7 @@ class ProStageController extends AbstractController
      */
     public function entreprises()
     {
-        return new Response(
-            '<h1>Cette page affichera la liste des entreprises proposant un stage</h1>'
-        );
+      return $this->render('pro_stage/entreprises.html.twig');
     }
 
     /**
@@ -33,9 +31,7 @@ class ProStageController extends AbstractController
      */
     public function formations()
     {
-        return new Response(
-            '<h1>Cette page affichera la liste des formations de l\'IUT</h1>'
-        );
+        return $this->render('pro_stage/formations.html.twig');
     }
 
     /**
@@ -43,8 +39,7 @@ class ProStageController extends AbstractController
      */
     public function stages($id)
     {
-        return new Response(
-            '<h1>Cette page affichera le descriptif du stage ayant pour identifiant '.$id.'</h1>'
-        );
+        return $this->render('pro_stage/stages.html.twig',
+        ['idStage' => $id]);
     }
 }
