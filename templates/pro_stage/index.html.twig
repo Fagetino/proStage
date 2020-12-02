@@ -1,3 +1,6 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
 <h1>Bienvenue sur la page d'accueil de Prostages<h1>
 
 <p>Liste des pages disponible sur le site :<p>
@@ -12,3 +15,4 @@
     <a href="{{path('prostage_stages', {id:154})}}">Stages</a>
   </li>
 </ul>
+{% endblock %}
