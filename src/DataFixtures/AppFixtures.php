@@ -78,7 +78,7 @@ class AppFixtures extends Fixture
             //Enregistrement du stage crée
             $manager->persist($stage);
 
-            /*** Création de plusieurs formations associées au stage***/
+            /*** Association de plusieurs formations au stage***/
             //Définition du nombre de stages ajoutés
             $nbFormations=$faker->numberBetween($min = 0, $max = count($tableauFormations));
             for ($numFormation=0; $numFormation < $nbFormations; $numFormation++) {
