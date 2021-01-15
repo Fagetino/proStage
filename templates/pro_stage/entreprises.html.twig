@@ -1,5 +1,29 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}proStage.fr Entreprises{% endblock %}
+
 {% block body %}
-<h1>Cette page affichera la liste des formations de l'IUT</h1>
+<h1 id="titre">Liste des entreprises</h1>
+<div class="row justify-content-center">
+  <div class="col-6">
+      <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Entreprise</th>
+                <th>Activité</th>
+                <th>Site Web</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for entrepriseCourante in entreprises %}
+            <tr>
+              <td><a href="#">{{entrepriseCourante.nom}}</a></td>
+              <td>{{entrepriseCourante.activite}}</td>
+              <td>{{entrepriseCourante.siteWeb}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>
 {% endblock %}

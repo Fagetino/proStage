@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}proStage.fr Stages{% endblock %}
+
 {% block body %}
 <h1>{{stage.titre}}</h1>
 <ul>
@@ -14,7 +16,7 @@
     {% for formationCourant in stage.formations %}
       {{formationCourant.intitule}}
       <!-- On affiche un tiret si il y a d'autres formations après -->
-      {% if loop.last == false%}
+      {% if loop.last == false %}
        -
       {% endif %}
     {% endfor %}

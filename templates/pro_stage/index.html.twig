@@ -13,7 +13,6 @@
 
   <div class="row justify-content-center">
     <div class="col-6">
-      <ul>
         <table class="table table-bordered">
           <thead>
               <tr>
@@ -33,7 +32,7 @@
                         {{formationCourant.intitule}}
 
                       <!-- On affiche un tiret si il y a d'autres formations après -->
-                      {% if loop.last == false%}
+                      {% if loop.last == false %}
                         -
                       {% endif %}
                     {% endfor %}
@@ -42,7 +41,6 @@
             {% endfor %}
           </tbody>
         </table>
-      </ul>
     </div>
   </div>
 {% endblock %}
