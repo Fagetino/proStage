@@ -17,7 +17,7 @@
         <tbody>
           {% for entrepriseCourante in entreprises %}
             <tr>
-              <td><a href="#">{{entrepriseCourante.nom}}</a></td>
+              <td><a href="{{path('prostage_tri_par_entreprise',{'idEntreprise':entrepriseCourante.id})}}">{{entrepriseCourante.nom}}</a></td>
               <td>{{entrepriseCourante.activite}}</td>
               <td>{{entrepriseCourante.siteWeb}}</td>
             </tr>

@@ -17,18 +17,13 @@ class ProStageController extends AbstractController
      */
     public function index(): Response
     {
-        //Récupération du repository des entités Entreprise, Formation et Stage
-        $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
-        $repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
-        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+      //Récupération du repository des entités Entreprise, Formation et Stage
+      $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+      //Récupération des entreprises, formations et stages enregistrés dans la BD
+      $stages = $repositoryStage->findAll();
 
-        //Récupération des entreprises, formations et stages enregistrés dans la BD
-        $entreprises = $repositoryEntreprise->findAll();
-        $formations = $repositoryFormation->findAll();
-        $stages = $repositoryStage->findAll();
-
-        //Envoie des entreprises, formations et stages récupérer à la vue chargé des les affichera
-        return $this->render('pro_stage/index.html.twig',['entreprises'=>$entreprises,'formations'=>$formations,'stages'=>$stages]);
+      //Envoie des entreprises, formations et stages récupérer à la vue chargé des les affichera
+      return $this->render('pro_stage/index.html.twig',['stages'=>$stages]);
     }
 
     /**
@@ -74,5 +69,35 @@ class ProStageController extends AbstractController
 
         //Envoie des stages récupérer à la vue chargé des les affichera
         return $this->render('pro_stage/stages.html.twig',['stage' => $stage]);
+    }
+
+    /**
+     * @Route("/{id}", name="prostage_tri_par_formation")
+     */
+    public function triParFormation($id)
+    {
+        //Récupération du repository de l'entité Stage
+        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        //Récupération des stages enregistrés dans la BD
+        $stages = $repositoryStage->findByFormations($id);
+
+        //Envoie des stages récupérer à la vue chargé des les affichera
+        return $this->render('pro_stage/index.html.twig',['stages' => $stages]);
+    }
+
+    /**
+     * @Route("/{idEntreprise}", name="prostage_tri_par_entreprise")
+     */
+    public function triParEntreprise($idEntreprise)
+    {
+        //Récupération du repository de l'entité Stage
+        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        //Récupération des stages enregistrés dans la BD
+        $stages = $repositoryStage->findByEntreprise($idEntreprise);
+
+        //Envoie des stages récupérer à la vue chargé des les affichera
+        return $this->render('pro_stage/index.html.twig',['stages' => $stages]);
     }
 }

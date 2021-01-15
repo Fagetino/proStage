@@ -16,7 +16,7 @@
         <tbody>
           {% for formationCourante in formations %}
           <tr>
-            <td><a href="#">{{formationCourante.intitule}}</a></td>
+            <td><a href="{{path('prostage_tri_par_formation',{'id':formationCourante.id})}}">{{formationCourante.intitule}}</a></td>
             <td>{{formationCourante.description}}</td>
           </tr>
           {% endfor %}
