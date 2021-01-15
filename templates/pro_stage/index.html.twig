@@ -1,18 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-<h1>Bienvenue sur la page d'accueil de Prostages<h1>
+{% block stylesheets %}<link rel="stylesheet" href="{{asset('/css/styleAccueil.css')}}">{% endblock %}
 
-<p>Liste des pages disponible sur le site :<p>
-<ul>
-  <li>
-    <a href="{{path('prostage_entreprises')}}">Entreprises</a>
-  </li>
-  <li>
-    <a href="{{path('prostage_formations')}}">Formations</a>
-  </li>
-  <li>
-    <a href="{{path('prostage_stages', {id:154})}}">Stages</a>
-  </li>
-</ul>
+{% block body %}
+  <div class="row">
+    <div class="col-12 text-center">
+      <span>Filtrer par : </span>
+      <!-- Bouton permettant de filtrer par Formation -->
+      <a class="btn btn-dark" href="{{path('prostage_formations')}}" role="button">Formations</a>
+      <!-- Bouton permettant de filtrer par Entreprise -->
+      <a class="btn btn-dark" href="{{path('prostage_entreprises')}}" role="button">Entreprises</a>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <ul>
+        <table class="table table-bordered">
+          <thead>
+              <tr>
+                  <th>Titre</th>
+                  <th>Entreprise</th>
+                  <th>Formations requises</th>
+              </tr>
+          </thead>
+          <tbody>
+            <!-- Affichage des stages -->
+            {% for stageCourant in stages %}
+              <tr>
+                <td>  <a href="{{path('prostage_stages',{id:stageCourant.id})}}">{{stageCourant.titre}}</a></td>
+                <td>{{stageCourant.entreprise.nom}}</td>
+                <!-- Affichage de toute les formations requises pour le stage -->
+                <td>{% for formationCourant in stageCourant.formations %}
+                        {{formationCourant.intitule}}
+
+                      <!-- On affiche un tiret si il y a d'autres formations après -->
+                      {% if loop.last == false%}
+                        -
+                      {% endif %}
+                    {% endfor %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </ul>
+    </div>
+  </div>
 {% endblock %}
