@@ -1,0 +1,27 @@
+.row{
+  margin-bottom: 1em;
+}
+
+nav{
+  padding-left: 0.5em;
+}
+
+h4{
+  font-size: 1.1em;
+  margin-right: 3px;
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+  width: 70%;
+}
+
+li{
+  display: flex;
+}
+
+#mission{
+  width: 70%;
+  text-align: justify;
+}

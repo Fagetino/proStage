@@ -1,5 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Cette page affichera le descriptif du stage ayant pour identifiant</h1>
+<h1>{{stage.titre}}</h1>
+<ul>
+  <li><h4>Entreprise : </h4> {{stage.entreprise.nom}}</li>
+  <li><h4>Activité : </h4> {{stage.entreprise.activite}}</li>
+  <li><h4>Adresse : </h4> {{stage.entreprise.adresse}}</li>
+  <li><h4>Email : </h4> {{stage.adresseMail}}</li>
+  <li><h4>Site Web : </h4> {{stage.entreprise.siteWeb}}</li>
+  <li>
+    <h4>Formations requises :</h4>
+    <!-- Affichage de la liste des formations pour ce stage -->
+    {% for formationCourant in stage.formations %}
+      {{formationCourant.intitule}}
+      <!-- On affiche un tiret si il y a d'autres formations après -->
+      {% if loop.last == false%}
+       -
+      {% endif %}
+    {% endfor %}
+  </li>
+</ul>
+<div id="mission">
+  <h4>Mission : </h4>{{stage.mission}}</li>
+</div>
+
+
 {% endblock %}

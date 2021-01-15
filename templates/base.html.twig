@@ -3,10 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
+
 
         <!-- BLOC DES FEUILLES DE STYLE -->
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('/css/style.css')}}">
+        {% endblock %}
     </head>
     <body>
       <!-- NavBar afficher en haut de l'écran-->
