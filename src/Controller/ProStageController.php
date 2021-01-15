@@ -58,7 +58,7 @@ class ProStageController extends AbstractController
         $formations = $repositoryFormation->findAll();
 
         //Envoie des formations récupérer à la vue chargé des les affichera
-        return $this->render('pro_stage/formations.html.twig',['formations', $formations]);
+        return $this->render('pro_stage/formations.html.twig',['formations'=>$formations]);
     }
 
     /**

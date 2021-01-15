@@ -1,5 +1,27 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}proStage.fr Formation{% endblock %}
+
 {% block body %}
-<h1>Cette page affichera la liste des formations de l'IUT</h1>
+<h1 id="titre">Liste des formations</h1>
+<div class="row justify-content-center">
+  <div class="col-6">
+      <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Formation</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for formationCourante in formations %}
+          <tr>
+            <td><a href="#">{{formationCourante.intitule}}</a></td>
+            <td>{{formationCourante.description}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>
 {% endblock %}
